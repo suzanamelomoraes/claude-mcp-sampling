@@ -33,7 +33,7 @@ Setting up sampling requires code on both sides:
 **Server Side**
 In your tool function, use the create_message function to request text generation:
 
-```typescript
+```python
 @mcp.tool()
 async def summarize(text_to_summarize: str, ctx: Context):
     prompt = f"""
@@ -64,7 +64,7 @@ async def summarize(text_to_summarize: str, ctx: Context):
 **Client Side**
 Create a sampling callback that handles the server's requests:
 
-```typescript
+```python
 async def sampling_callback(
     context: RequestContext, params: CreateMessageRequestParams
 ):
@@ -80,7 +80,7 @@ async def sampling_callback(
 
 Then pass this callback when initializing your client session:
 
-```typescript
+```python
 async with ClientSession(
     read,
     write,
