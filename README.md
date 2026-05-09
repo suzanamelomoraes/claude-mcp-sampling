@@ -1,4 +1,4 @@
-# MCP Logging and Progress Demo
+# MCP Sampling and Progress Demo
 
 This repository is part of the Model Context Protocol Advanced course and is used as a hands-on playground for learning Sampling.
 
@@ -22,11 +22,11 @@ uv run client.py
 
 ---
 
-## Sampling
+# Sampling
 
 Sampling is when an MCP server asks Claude to generate text on its behalf. It reverses the usual direction: instead of Claude calling the server, the server calls Claude. This shifts the responsibility and cost of text generation from the server to the client.
 
-### Implementation
+## Implementation
 
 Setting up sampling requires code on both sides:
 
@@ -89,7 +89,7 @@ async with ClientSession(
     await session.initialize()
 ```
 
-### When Should You Use It?
+## When Should You Use It?
 
 Use sampling when your MCP server needs AI reasoning embedded inside a workflow it's orchestrating — without forcing that logic back through the user or a separate API call you manage yourself.
 Good fits:
