@@ -1,4 +1,4 @@
-# MCP Sampling and Progress Demo
+# MCP Sampling Demo
 
 This repository is part of the Model Context Protocol Advanced course and is used as a hands-on playground for learning Sampling.
 
