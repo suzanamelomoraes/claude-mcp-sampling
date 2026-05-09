@@ -20,6 +20,8 @@ server_params = StdioServerParameters(
 
 
 async def chat(input_messages: list[SamplingMessage], max_tokens=4000):
+    # The list of messages provided by the server are formatted for communication in MCP
+    # Individual messages aren't guaranteed to be compatible with the LLM SDK used
     messages = []
     for msg in input_messages:
         if msg.role == "user" and msg.content.type == "text":
@@ -46,7 +48,7 @@ async def chat(input_messages: list[SamplingMessage], max_tokens=4000):
     text = "".join([p.text for p in response.content if p.type == "text"])
     return text
 
-
+# Function to receive a list of messages provided by the MCP server
 async def sampling_callback(
     context: RequestContext, params: CreateMessageRequestParams
 ):
@@ -59,7 +61,7 @@ async def sampling_callback(
         content=TextContent(type="text", text=text),
     )
 
-
+# The callback on the client needs to be passed into the ClientSession call
 async def run():
     async with stdio_client(server_params) as (read, write):
         async with ClientSession(
